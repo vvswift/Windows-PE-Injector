@@ -7,6 +7,11 @@ Injector - sources of the injector
 - DLL injection via manual map + search and call of the exported function Run
 - EXE - manual mapping of EXE sections into svchost.exe, editing PEB.ProcessParameters, execution of EntryPoint
 
+## Disclaimer
+> This repository is provided for educational purposes only and intended for authorized security research.
+> Use of these materials in unauthorized or illegal activities is strictly prohibited.
+
+
 ### General execution stack
 1. InitSyscalls scans the .text section in ntdll, finds the pattern mov r10, rcx; mov eax, <id>; syscall; ret and copies it to RWX buffer, after which all Nt calls go through this stub. If the required template is not found, a manual syscall stub is built.
 2. PPID spoofing is created, the parent process of the new thread becomes explorer.exe
